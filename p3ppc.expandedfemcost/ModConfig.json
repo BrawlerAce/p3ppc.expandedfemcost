@@ -1,0 +1,30 @@
+{
+    "ModId": "p3ppc.expandedfemcost",
+    "ModName": "Expanded FEMC OST",
+    "ModAuthor": "Brawler, MineFormer, karma",
+    "ModVersion": "1.0.0",
+    "ModDescription": "Replaces some tracks originally retained from the male route to fit FEMC\u0027s leitmotifs more.",
+    "ModDll": "p3ppc.expandedfemcost.dll",
+    "ModIcon": "Preview.png",
+    "ModR2RManagedDll32": "x86/p3ppc.expandedfemcost.dll",
+    "ModR2RManagedDll64": "x64/p3ppc.expandedfemcost.dll",
+    "ModNativeDll32": "",
+    "ModNativeDll64": "",
+    "Tags": [],
+    "CanUnload": null,
+    "HasExports": null,
+    "IsLibrary": false,
+    "ReleaseMetadataFileName": "p3ppc.expandedfemcost.ReleaseMetadata.json",
+    "PluginData": {},
+    "IsUniversalMod": false,
+    "ModDependencies": [
+        "BGME.Framework",
+        "p5rpc.modloader",
+        "reloaded.sharedlib.hooks"
+    ],
+    "OptionalDependencies": [],
+    "SupportedAppId": [
+        "p3p.exe"
+    ],
+    "ProjectUrl": ""
+}
