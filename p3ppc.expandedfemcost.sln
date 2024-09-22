@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p3ppc.expandedfemcost", "p3ppc.expandedfemcost\p3ppc.expandedfemcost.csproj", "{6DEDD5FC-C5C2-4C41-A86A-75C5FCA1158E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "p3ppc.expandedfemcost", "p3ppc.expandedfemcost\p3ppc.expandedfemcost.csproj", "{6DEDD5FC-C5C2-4C41-A86A-75C5FCA1158E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriFs.V2.Hook.Interfaces", "Interfaces\CriFs.V2.Hook.ReloadedII\Interfaces\CriFs.V2.Hook.Interfaces\CriFs.V2.Hook.Interfaces.csproj", "{56DADAC5-3CB8-41EF-81D9-361614AA5072}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6DEDD5FC-C5C2-4C41-A86A-75C5FCA1158E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DEDD5FC-C5C2-4C41-A86A-75C5FCA1158E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DEDD5FC-C5C2-4C41-A86A-75C5FCA1158E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56DADAC5-3CB8-41EF-81D9-361614AA5072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56DADAC5-3CB8-41EF-81D9-361614AA5072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56DADAC5-3CB8-41EF-81D9-361614AA5072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56DADAC5-3CB8-41EF-81D9-361614AA5072}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,6 +2,8 @@
 using p3ppc.expandedfemcost.Template;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
+using CriFs.V2.Hook;
+using CriFs.V2.Hook.Interfaces;
 
 namespace p3ppc.expandedfemcost
 {
@@ -58,7 +60,33 @@ namespace p3ppc.expandedfemcost
             // and some other neat features, override the methods in ModBase.
 
             // TODO: Implement some mod logic
+
+            var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
+            if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
+            {
+                _logger.WriteLine($"criFsController returned as null! p3ppc.expandedfemcost will not work properly!", System.Drawing.Color.Red);
+                return;
+            }
+
+            var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
+
+            if (_configuration.LastBattle == true)
+            {
+                criFsApi.AddProbingPath(Path.Combine(modDir, "LastBattle"));
+            }
+
+            if (_configuration.PaulowniaMall == true)
+            {
+                criFsApi.AddProbingPath(Path.Combine(modDir, "PaulowniaMall"));
+            }
+
+            if (_configuration.Tranquility == true)
+            {
+                criFsApi.AddProbingPath(Path.Combine(modDir, "Tranquility"));
+            }
         }
+
+
 
         #region Standard Overrides
         public override void ConfigurationUpdated(Config configuration)
