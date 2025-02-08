@@ -2,8 +2,7 @@
 using p3ppc.expandedfemcost.Template;
 using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
-using CriFs.V2.Hook;
-using CriFs.V2.Hook.Interfaces;
+using Ryo.Interfaces;
 
 namespace p3ppc.expandedfemcost
 {
@@ -52,41 +51,36 @@ namespace p3ppc.expandedfemcost
             _configuration = context.Configuration;
             _modConfig = context.ModConfig;
 
-
-            // For more information about this template, please see
-            // https://reloaded-project.github.io/Reloaded-II/ModTemplate/
-
-            // If you want to implement e.g. unload support in your mod,
-            // and some other neat features, override the methods in ModBase.
-
-            // TODO: Implement some mod logic
-
-            var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
-            if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
+            var ryoController = _modLoader.GetController<IRyoApi>();
+            if (ryoController == null || !ryoController.TryGetTarget(out var ryoControllerApi))
             {
-                _logger.WriteLine($"criFsController returned as null! p3ppc.expandedfemcost will not work properly!", System.Drawing.Color.Red);
+                _logger.WriteLine($"Ryo Framework Controller returned as null! p3ppc.expandedfemcost will not work properly!", System.Drawing.Color.Red);
                 return;
             }
 
-            var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
-
-            if (_configuration.LastBattle == true)
-            {
-                criFsApi.AddProbingPath(Path.Combine(modDir, "LastBattle"));
-            }
-
-            if (_configuration.PaulowniaMall == true)
-            {
-                criFsApi.AddProbingPath(Path.Combine(modDir, "PaulowniaMall"));
-            }
-
-            if (_configuration.Tranquility == true)
-            {
-                criFsApi.AddProbingPath(Path.Combine(modDir, "Tranquility"));
-            }
+            InitializeMusic(ryoControllerApi);
         }
 
+        private void InitializeMusic(IRyoApi ryo)
+        {
+            var MusicRegistry = new Dictionary<string, bool>()
+            {
+                //Add the relative path from OST/FILE.ryo
+                {"Tranquility", _configuration.Tranquility},
+                {"LastBattle", _configuration.LastBattle},
+                {"WayOfLife", _configuration.PaulowniaMall}
+            };
 
+            foreach (KeyValuePair<string, bool> register in MusicRegistry)
+            {
+                if (register.Value)
+                {
+                    string musicfolder = Path.Combine(_modLoader.GetDirectoryForModId(_modConfig.ModId), "OST", register.Key);
+                    if(Path.Exists(musicfolder))
+                        ryo.AddAudioFolder(musicfolder);
+                }
+            }
+        }
 
         #region Standard Overrides
         public override void ConfigurationUpdated(Config configuration)
@@ -94,7 +88,7 @@ namespace p3ppc.expandedfemcost
             // Apply settings from configuration.
             // ... your code here.
             _configuration = configuration;
-            _logger.WriteLine($"[{_modConfig.ModId}] Config Updated: Applying");
+            _logger.WriteLine($"[{_modConfig.ModId}] Config Updated: You will need to restart the game for changes to appear.");
         }
         #endregion
 

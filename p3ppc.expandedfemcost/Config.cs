@@ -31,7 +31,7 @@ namespace p3ppc.expandedfemcost.Configuration
         [DefaultValue(true)]
         public bool LastBattle { get; set; } = true;
 
-        [DisplayName("Paulownia Mall")]
+        [DisplayName("A Way of Life")]
         [Description("Replaces Paulownia Mall (the shop theme) with A Way of Life -Deep inside my mind Remix-.")]
         [DefaultValue(true)]
         public bool PaulowniaMall { get; set; } = true;
